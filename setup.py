@@ -8,12 +8,16 @@ setuptools.setup(
     version="0.0.1",
     author="Naim Malek",
     author_email="naimmalek92@gmail.com",
-    description="Dump mongodb data to elasticsearch, big data",
+    description="MongoDB to Elasticsearch. Through this you can import data from mongoDB to elasticsearch.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/naimmalek/mongoelastic",
     download_url="https://pypi.org/project/mongoelastic/",
     packages=setuptools.find_packages(),
+    install_requires=["progress >= 1.5",
+                      "elasticsearch >=7.6.0",
+                      "pymongo >=3.10.1"
+                      ],
     keywords=[
         "mongodb",
         "elasticsearch import",
@@ -27,7 +31,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.5',
     license="MIT",
 
 )
