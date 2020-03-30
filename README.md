@@ -15,9 +15,28 @@
 
 ### Usage of commands
 
-1. Help - Used to display the help section of Wplay
+* Here is the sample code 
 ```shell
-python3 -m wplay -h
+from mongoelastic.mongoelastic import MongoElastic
+
+obj = {
+    'mongo_host': 'YOUR_MONGO_HOST',
+    'mongo_port': YOUR_MONGO_PORT,
+    'mongo_db_name': 'YOUR_MONGO_DB_NAME',
+    'mongo_document_name': 'YOUR_MONGO_DOCUMENT_NAME',
+    'es_host': ['YOUR_ES_HOST'], # in list
+    'es_http_auth': ('ES_USER', 'ES_PASSWORD'), # in tupple
+    'es_port': ES_PORT,
+    'es_index_name': 'ES_INDEX_NAME',
+    'es_doc_type': 'ES_DOC_TYPE_NAME',
+}
+obb = MongoElastic(obj)
+obb.start()
+
+
+You can also filter query MongoDB like:
+m_filter = {'mongo_condition':{"_id" : "5d9740bc245fb21097e82c11"}}
+obb.start(m_filter)  
 ```
 
 

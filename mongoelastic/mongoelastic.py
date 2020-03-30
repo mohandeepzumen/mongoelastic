@@ -1,10 +1,11 @@
 from pymongo import MongoClient
 from elasticsearch import Elasticsearch
-from progress.bar import Bar
+from progress.spinner import Spinner
 
 
-class MongoElastic(object):
-    def __init__(self, *args):
+class MongoElastic:
+    def __init__(self, args):
+
         # mongo db connection
         self.mongo_host = args.get('mongo_host', 'localhost')
         self.mongo_port = args.get('mongo_port', 27017)
@@ -18,15 +19,15 @@ class MongoElastic(object):
         self.es_index_name = args.get('es_index_name', 'mongoelastic_index')
         self.es_doc_type = args.get('es_doc_type', 'mongoelastic_doc_type')
 
-    def start(self, obj):
+    def start(self, m_filter=None):
+        m_filter = dict() if not m_filter else m_filter
         client = MongoClient(self.mongo_host, self.mongo_port, maxPoolSize=self.mongo_max_pool_size)
         db = client[self.mongo_db_name]
         document_name = db[self.mongo_document_name]
 
-        mongo_where = obj.get('mongo_where', {})
+        mongo_where = m_filter.get('mongo_condition', {})
         # get all data from mongoDB db
         m_data = document_name.find(mongo_where)
-
         es = Elasticsearch(
             self.es_host,
             http_auth=self.es_http_auth,
@@ -34,7 +35,8 @@ class MongoElastic(object):
             use_ssl=False)
 
         i = 1
-        for line in Bar('Importing...').iter(m_data):
+        spinner = Spinner('Importing... ')
+        for line in m_data:
             docket_content = line
             # remove _id from mongo object
             del docket_content['_id']
@@ -44,4 +46,6 @@ class MongoElastic(object):
             except Exception:
                 pass
             i += 1
+            spinner.next()
+        client.close()
         return True
