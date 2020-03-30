@@ -7,7 +7,7 @@ setuptools.setup(
     name="mongoelastic",
     version="0.0.1",
     author="Naim Malek",
-    author_email="naimmalek92@gmail.com",
+    author_email="naim@peerbits.com",
     description="MongoDB to Elasticsearch. Through this you can import data from mongoDB to elasticsearch.",
     long_description=long_description,
     long_description_content_type="text/markdown",
