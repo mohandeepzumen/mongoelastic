@@ -13,7 +13,6 @@
 ## Usage
 
 
-### Usage of package
 
 * Here is the sample code 
 ```shell
