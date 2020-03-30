@@ -19,7 +19,7 @@
 ```shell
 from mongoelastic.mongoelastic import MongoElastic
 
-obj = {
+config = {
     'mongo_host': 'YOUR_MONGO_HOST',
     'mongo_port': YOUR_MONGO_PORT,
     'mongo_db_name': 'YOUR_MONGO_DB_NAME',
@@ -30,7 +30,7 @@ obj = {
     'es_index_name': 'ES_INDEX_NAME',
     'es_doc_type': 'ES_DOC_TYPE_NAME',
 }
-obb = MongoElastic(obj)
+obb = MongoElastic(config)
 obb.start()
 
 
