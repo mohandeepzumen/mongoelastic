@@ -1,5 +1,7 @@
 # mongoDB to elasticsearch
 
+[![PyPI](https://img.shields.io/pypi/v/mongoelastic?color=green)](https://pypi.org/project/mongoelastic/)
+
 
 ***mongoelastic*** stands for MongoDB to Elasticsearch. Through this you can import data from mongoDB to elasticsearch.
 
@@ -42,6 +44,6 @@ obb.start(m_filter)
 
 ## License
 
-[![License](https://img.shields.io/github/license/naimmalek/mongoelastic.svg)](https://github.com/naimmalek/mongoelastic/blob/master/README.md)
+[![Licence](https://img.shields.io/badge/Licence-MIT-GREEN.svg)](https://pypi.org/project/mongoelastic/)
 
 ***If you like the project, support by star***
