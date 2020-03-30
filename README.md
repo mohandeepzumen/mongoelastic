@@ -34,7 +34,7 @@ obb = MongoElastic(config)
 obb.start()
 
 
-You can also filter query MongoDB like:
+# You can also filter query MongoDB like:
 m_filter = {'mongo_condition':{"_id" : "5d9740bc245fb21097e82c11"}}
 obb.start(m_filter)  
 ```
