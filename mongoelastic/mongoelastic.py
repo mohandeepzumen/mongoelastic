@@ -19,7 +19,7 @@ class MongoElastic:
         self.es_port = args.get('es_port', None)
         self.es_index_name = args.get('es_index_name', 'mongoelastic_index')
         self.es_doc_type = args.get('es_doc_type', 'mongoelastic_doc_type')
-    
+
     def start(self, m_filter=None):
         m_filter = dict() if not m_filter else m_filter
         client = MongoClient(self.mongo_host, self.mongo_port, maxPoolSize=self.mongo_max_pool_size)

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mongoelastic",
-    version="0.0.3",
+    version="0.0.4",
     author="Naim Malek",
     author_email="naim@peerbits.com",
     description="MongoDB to Elasticsearch. Through this you can import data from mongoDB to elasticsearch.",
