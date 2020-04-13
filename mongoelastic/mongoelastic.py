@@ -19,6 +19,8 @@ class MongoElastic:
         self.es_port = args.get('es_port', None)
         self.es_index_name = args.get('es_index_name', 'mongoelastic_index')
         self.es_doc_type = args.get('es_doc_type', 'mongoelastic_doc_type')
+        self.use_ssl = args.get('use_ssl', False)
+        self.ca_certs = args.get('ca_certs', None)
 
     def start(self, m_filter=None):
         m_filter = dict() if not m_filter else m_filter
@@ -30,15 +32,12 @@ class MongoElastic:
         # get all data from mongoDB db
         m_data = document_name.find(mongo_where)
 
-        conf = dict()
-        if self.es_http_auth:
-            conf['http_auth'] = self.es_http_auth
-        if self.es_port:
-            conf['port'] = self.es_port
-        conf['use_ssl'] = False
         es = Elasticsearch(
             self.es_host,
-            **conf
+            http_auth=self.es_http_auth if self.es_http_auth else None,
+            port=self.es_port if self.es_port else None,
+            use_ssl=self.use_ssl if self.use_ssl else False,
+            ca_certs=self.ca_certs if self.ca_certs else None
         )
         i = 1
         spinner = Spinner('Importing... ')

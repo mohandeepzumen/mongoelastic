@@ -31,6 +31,8 @@ config = {
     'es_port': ES_PORT,
     'es_index_name': 'ES_INDEX_NAME',
     'es_doc_type': 'ES_DOC_TYPE_NAME',
+    'use_ssl':True/False,
+    'ca_certs':'PATH'  
 }
 obb = MongoElastic(config)
 obb.start()
